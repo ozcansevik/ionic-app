@@ -1,0 +1,33 @@
+<!--
+  Generated template for the Master page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Hikings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-card class="flex_div" *ngFor="let h of hikings" (click)="selectHiking(h)">
+      <div style="margin: 0"> <img class="hiking_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/></div>
+      <div class="hiking_data">
+        <h2>{{h.name}}</h2>
+        <div>{{h.lieu}}</div>
+        <div>{{h.description}}</div>
+        <div>
+          <span>~{{h.duree | date : 'h:mm'}}</span>
+          <span>~{{h.denivele}}m</span>
+        </div>
+        <div>{{h.note}}/5</div>
+      </div>
+
+    </ion-card>
+
+</ion-content>

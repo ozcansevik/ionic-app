@@ -1,0 +1,40 @@
+<!--
+  Generated template for the DetailDuring page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="hiking">
+    
+    <div class="header_div">
+      <h1>{{hiking.name}}</h1>
+      <div>{{hiking.duree}}</div>
+    </div>
+
+    <div class="map_div">
+        <img class="header_img" src="http://images.indianexpress.com/2017/05/google-maps-759.jpg"/>
+    </div>
+
+    <div class="step_div">
+        <h1>Steps</h1>
+
+            <ion-list>
+                <div class="step" *ngFor="let step of hiking.steps">
+                    <div class="number">{{step.number}}</div>
+                    <div>{{step.description}}</div>
+                </div>
+           </ion-list>
+        
+    </div>
+
+  </div>
+
+
+</ion-content>

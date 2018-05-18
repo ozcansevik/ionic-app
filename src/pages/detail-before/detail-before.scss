@@ -1,0 +1,32 @@
+page-detail-before {
+
+    .header_img{
+        width: 100%;
+        height: 38vh;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    .hiking_data{
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2%;
+        font-size: 18px;
+
+        div{
+            padding: 1%;
+        }
+
+        .description_text{
+            font-size: 14px;
+        }
+    }
+
+    .map_div{
+        height: 10vh;
+    }
+}

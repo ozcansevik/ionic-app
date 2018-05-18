@@ -1,0 +1,30 @@
+page-master {
+
+    .hiking_img{
+        //width: 90px;
+        //height: 100px;
+    }
+
+    .flex_div{
+        display: flex;
+        padding: 2%;
+        align-items: center;
+    }
+
+    ion-card{
+        .main_div{
+            margin: 50% 0;
+        }
+    }
+
+    .hiking_data{
+        margin: 1%;
+        h2{
+            padding: 3%;
+        }
+        div{
+            padding: 3%;
+        }
+    }
+   
+}
