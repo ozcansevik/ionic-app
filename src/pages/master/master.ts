@@ -29,6 +29,6 @@ export class Master {
 
   selectHiking(h){
    this.hikingService.selectHiking(h);
-   this.navCtrl.push('DetailBefore',{ 'hiking' : h });
+   this.navCtrl.push('DetailBefore', {'hiking' : h});
   }
 }

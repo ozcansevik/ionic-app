@@ -3,6 +3,8 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 import {Hiking} from '../../model/hiking'
 import { HikingService } from '../../services/hiking-service';
+import { ActivatedRoute } from '@angular/router';
+
 /**
  * Generated class for the DetailBefore page.
  *
@@ -10,7 +12,8 @@ import { HikingService } from '../../services/hiking-service';
  * Ionic pages and navigation.
  */
 @IonicPage({
-  name: "DetailBefore"
+  name: "DetailBefore",
+  segment: 'detail/:id'
 })
 @Component({
   selector: 'page-detail-before',
@@ -20,10 +23,11 @@ export class DetailBefore {
 
   hiking: Hiking
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService,
+     private activatedRoute: ActivatedRoute) {
 
     console.log(this.navParams)
-    if(this.navParams.get('hiking')){
+    if(this.navParams.get('hiking') != null){
       this.hiking = this.navParams.get('hiking');
     } else {
       this.hiking = this.hikingService.getSelectedHiking();
@@ -31,7 +35,10 @@ export class DetailBefore {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailBefore');
+      this.activatedRoute.params.subscribe(paramsId => {
+          let id = paramsId.id;
+          // call service to return hiking according to id;
+      });
   }
 
   start(h){
