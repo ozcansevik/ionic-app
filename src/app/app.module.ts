@@ -12,7 +12,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Master } from '../pages/master/master';
+import { MapComponent } from '../components/map/map-component';
+import { HikingService } from '../services/hiking-service';
 
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { Master } from '../pages/master/master';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAf7-k6CUMBk97FkOKzhcEhsBUokF99fkk'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,7 +45,8 @@ import { Master } from '../pages/master/master';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HikingService
   ]
 })
 export class AppModule {}

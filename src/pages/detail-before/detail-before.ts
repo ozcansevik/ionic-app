@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 import {Hiking} from '../../model/hiking'
+import { HikingService } from '../../services/hiking-service';
 /**
  * Generated class for the DetailBefore page.
  *
@@ -19,8 +20,14 @@ export class DetailBefore {
 
   hiking: Hiking
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.hiking = this.navParams.get('hiking');
+  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
+
+    console.log(this.navParams)
+    if(this.navParams.get('hiking')){
+      this.hiking = this.navParams.get('hiking');
+    } else {
+      this.hiking = this.hikingService.getSelectedHiking();
+    }
   }
 
   ionViewDidLoad() {

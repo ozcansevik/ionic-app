@@ -16,7 +16,7 @@ page-detail-before {
         align-items: center;
         padding: 2%;
         font-size: 18px;
-
+        justify-content: space-between;
         div{
             padding: 1%;
         }
@@ -26,7 +26,17 @@ page-detail-before {
         }
     }
 
+    .inline_div{
+        display: flex;
+        justify-content: center;
+        .button{
+            text-align: center;
+        }
+    }
+
     .map_div{
+        text-align: center;
         height: 10vh;
+        margin-top: 5%;
     }
 }
