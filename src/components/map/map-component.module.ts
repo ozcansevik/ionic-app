@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { MapComponent } from '../../components/map/map-component';
 import { AgmCoreModule } from '@agm/core';
-import { Geolocation } from '@ionic-native/geolocation';
+import { AgmDirectionModule } from 'agm-direction'; 
+
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -9,14 +11,13 @@ import { Geolocation } from '@ionic-native/geolocation';
   ],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAf7-k6CUMBk97FkOKzhcEhsBUokF99fkk'
+      apiKey: 'AIzaSyBXXqdX00iR_GUjnBjQ5ptsbc6LJzII_lg'
     }),
+    CommonModule,
+    AgmDirectionModule 
   ],
   exports : [
     MapComponent
-  ],
-  providers: [
-    Geolocation
   ]
 })
 export class MapComponentModule {}

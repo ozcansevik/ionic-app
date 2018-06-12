@@ -1,13 +1,33 @@
 page-detail-during {
 
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        button{
+            flex:0.1;
+            background-color: #062181!important;
+            ion-icon{
+                color: white;
+            }
+        }
+        div{
+            flex:1.8;
+        }
+    }
+
     .header_div{
-        padding: 2%;
-        background-color: #48b3ff;
+        padding: 1%;
+        background-color: #062181!important;
         text-align: center;
         color: white;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
+
+        .toolbar-background-md{
+          background-color: #062181!important;
+          color: white;
+        }
 
         h1{
             margin:0;
@@ -18,9 +38,6 @@ page-detail-during {
 
     .map_div{
         text-align: center;
-        img{
-            max-height: 38vh;
-        }
     }
 
     .step_div{
@@ -33,11 +50,12 @@ page-detail-during {
             align-items: center;
             margin: 0 2%;
             .number{
-                border: 1px solid #48b3ff;
+                border: 1px solid #062181;
                 border-radius: 50%;
-                background-color: #48b3ff;
+                background-color: #062181;
                 padding: 0.5% 0.8%;
                 margin: 0 1%;
+                color: white;
             }
         }
     }

@@ -15,6 +15,8 @@ import { Master } from '../pages/master/master';
 import { MapComponent } from '../components/map/map-component';
 import { HikingService } from '../services/hiking-service';
 
+import { Geolocation } from '@ionic-native/geolocation';
+
 import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -30,7 +32,7 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAf7-k6CUMBk97FkOKzhcEhsBUokF99fkk'
+      apiKey: 'AIzaSyBXXqdX00iR_GUjnBjQ5ptsbc6LJzII_lg'
     })
   ],
   bootstrap: [IonicApp],
@@ -46,7 +48,8 @@ import { AgmCoreModule } from '@agm/core';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HikingService
+    HikingService,
+    Geolocation
   ]
 })
 export class AppModule {}

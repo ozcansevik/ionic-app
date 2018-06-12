@@ -12,26 +12,29 @@
 <ion-content>
 
   <div *ngIf="hiking">
-    
-    <div class="header_div">
-      <h1>{{hiking.name}}</h1>
-      <div>{{hiking.duree}}</div>
+
+    <div class="navbar">
+      <button (click)="navPop()"><ion-icon name="arrow-back"></ion-icon></button>
+      <div class="header_div">
+        <h1>{{hiking.name}}</h1>
+        <div>{{hiking.duree}}</div>
+      </div>
     </div>
 
     <div class="map_div">
-        <img class="header_img" src="http://images.indianexpress.com/2017/05/google-maps-759.jpg"/>
+      <map-component [navigationMode]="true" [currentLatitude]="current_latitude" [currentLongitude]="current_longitude" [markers]="hiking.steps"></map-component>
     </div>
 
     <div class="step_div">
-        <h1>Steps</h1>
+      <h1>Steps</h1>
 
-            <ion-list>
-                <div class="step" *ngFor="let step of hiking.steps">
-                    <div class="number">{{step.number}}</div>
-                    <div>{{step.description}}</div>
-                </div>
-           </ion-list>
-        
+      <ion-list>
+        <div class="step" *ngFor="let step of hiking.steps">
+          <div class="number">{{step.number}}</div>
+          <div>{{step.description}}</div>
+        </div>
+      </ion-list>
+
     </div>
 
   </div>

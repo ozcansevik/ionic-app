@@ -1,6 +1,6 @@
 export class Step{
 
-    constructor(public number:number, public description: string){
+    constructor(public number:string, public description: string, public latitude: number, public longitude: number){
 
     }
 

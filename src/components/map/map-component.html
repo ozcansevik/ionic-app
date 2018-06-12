@@ -1,12 +1,32 @@
-<!--<iframe width="600" height="450" 
-frameborder="0" style="border:0" 
-src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJXxh40_cd90cRcCnjy688CQM
-&destination=place_id:ChIJhdiIts8W90cRlaqLPiBM_30
-&key=AIzaSyAf7-k6CUMBk97FkOKzhcEhsBUokF99fkk" 
-allowfullscreen></iframe> 
--->
+<div>
+<agm-map [latitude]="currentLatitude" [longitude]="currentLongitude">
+  <agm-marker [latitude]="currentLatitude" [longitude]="currentLongitude"></agm-marker>
+  <agm-marker *ngFor="let m of markers"
+             [label]="{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      text: m.number
+                      }"
+             [iconUrl]="urlBlueMarker"  [latitude]="m.latitude" [longitude]="m.longitude"></agm-marker>
 
-<agm-map [latitude]="latitude" [longitude]="longitude">
-  <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+  <span *ngIf="!useDirection">
+     <agm-polyline 
+       [visible]="true"
+       [strokeWeight]="3"
+       [strokeColor]="'#062181'">
+        <agm-polyline-point
+          *ngFor="let coordinate of markers; let i=index"
+          [latitude]="coordinate.latitude"
+          [longitude]="coordinate.longitude">
+
+        </agm-polyline-point>
+      </agm-polyline></span>
+    <span *ngIf="useDirection">
+    <agm-direction  *ngFor="let dir of dirs" [renderOptions]="renderOpts" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+    </span>
+
 </agm-map>
 
+<button *ngIf="navigationMode" ion-button round class="direction_button" [ngClass]="{'useDirection' : !useDirection}" (click)="changeMode()">Direction</button>
+
+</div>

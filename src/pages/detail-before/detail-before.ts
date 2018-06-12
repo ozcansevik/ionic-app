@@ -3,8 +3,7 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 import {Hiking} from '../../model/hiking'
 import { HikingService } from '../../services/hiking-service';
-import { ActivatedRoute } from '@angular/router';
-
+import { Geolocation } from '@ionic-native/geolocation';
 /**
  * Generated class for the DetailBefore page.
  *
@@ -12,8 +11,7 @@ import { ActivatedRoute } from '@angular/router';
  * Ionic pages and navigation.
  */
 @IonicPage({
-  name: "DetailBefore",
-  segment: 'detail/:id'
+  name: "DetailBefore"
 })
 @Component({
   selector: 'page-detail-before',
@@ -23,8 +21,11 @@ export class DetailBefore {
 
   hiking: Hiking
 
+  current_longitude: number;
+  current_latitude: number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService,
-     private activatedRoute: ActivatedRoute) {
+              private geolocation: Geolocation) {
 
     console.log(this.navParams)
     if(this.navParams.get('hiking') != null){
@@ -35,14 +36,19 @@ export class DetailBefore {
   }
 
   ionViewDidLoad() {
-      this.activatedRoute.params.subscribe(paramsId => {
-          let id = paramsId.id;
-          // call service to return hiking according to id;
-      });
   }
 
   start(h){
     this.navCtrl.push('DetailDuring',{ 'hiking' : h });
+  }
+
+  ionViewDidEnter(){
+     let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      // data can be a set of coordinates, or an error (if an error occurred).
+      this.current_latitude = data.coords.latitude;
+      this.current_longitude = data.coords.longitude;
+    });
   }
 
 }
