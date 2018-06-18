@@ -27,6 +27,7 @@ export class DetailDuring {
   constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
 
     this.hiking = this.hikingService.getSelectedHiking();
+    console.log("selected hiking", this.hiking);
   }
 
   ionViewDidLoad() {

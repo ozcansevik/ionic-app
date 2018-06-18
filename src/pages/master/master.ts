@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
-import {Hiking} from '../../model/hiking'
+import { Hiking } from '../../model/hiking'
 import { Step } from '../../model/step';
 import { HikingService } from '../../services/hiking-service';
 
@@ -23,17 +23,26 @@ export class Master {
 
   hikings: Array<Hiking>
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
-    this.hikings = this.hikingService.hikings;
+  loaded: boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private hikingService: HikingService) {
+
+    this.hikingService.getHikings().subscribe((hikings) => {
+      this.hikings = hikings;
+      if (this.hikings.length > 0) {
+        this.loaded = true;
+      }
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Master');
   }
 
-  selectHiking(h){
-   this.hikingService.selectHiking(h);
-   this.navCtrl.push('DetailBefore', {'hiking' : h});
+  selectHiking(h) {
+    this.hikingService.selectHiking(h);
+    this.navCtrl.push('DetailBefore', { 'hiking': h });
   }
 
   goToAddPage(){
