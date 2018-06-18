@@ -62,10 +62,9 @@ export class HikingService {
   }
 
   addHiking(hiking){
-    this.hikings.push(hiking);
+    //this.hikings.push(hiking);
   }
   fetchHiking(hikings) {
-    let hikingCpt = 0;
 
     return this.http.get(this.urlHikingLyon).subscribe( (data: any) => {
       data.features.forEach(feature => {
