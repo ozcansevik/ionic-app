@@ -14,23 +14,36 @@
 
 
 <ion-content padding>
+    <ion-row>
+      <ion-col col-6 offset-3>
+        <div class="location_div"> <img src="../../assets/imgs/arconseilon18.jpg"/></div>
+      </ion-col>
+    </ion-row>
   <form [formGroup]="addHikingForm">
-
+    <ion-row>
+  <ion-col col-6 offset-3>
     <ion-item>
       <ion-label floating>Nom</ion-label>
       <ion-input [formControl]="addHikingForm.controls['nom']"
           type="text"></ion-input>
     </ion-item>
-    
-    <ion-item>
-      <ion-label floating>Description</ion-label>
-      <ion-input [formControl]="addHikingForm.controls['description']"
-          type="text"></ion-input>
-    </ion-item>   
+  </ion-col>
+  </ion-row>
+
+  
+  <ion-row>
+    <ion-col col-6 offset-3>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-input [formControl]="addHikingForm.controls['description']"
+            type="text"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+
     <ion-row>
-        <ion-col col-3>
-          </ion-col>
-    <ion-col col-3>
+    <ion-col col-3 offset-3>
     <ion-item>
       <ion-label floating>Ville</ion-label>
       <ion-input [formControl]="addHikingForm.controls['lieu']"
@@ -38,34 +51,66 @@
     </ion-item>
   </ion-col>
   <ion-col col-3>
-
     <ion-item>
       <ion-label floating>Durée</ion-label>
-      <ion-input [formControl]="addHikingForm.controls['duree']"
-          type="text"></ion-input>
+      <ion-datetime displayFormat="HH:mm" [formControl]="addHikingForm.controls['duree']"></ion-datetime>
     </ion-item>   
   </ion-col>
 </ion-row>
 
     <ion-row>
-        <ion-col width-50>
+        <ion-col col-3 offset-3>
             <ion-item>
                 <ion-label floating>Dénivellé</ion-label>
                 <ion-input [formControl]="addHikingForm.controls['denivelle']"
-                    type="text"></ion-input>
+                    type="number"></ion-input>
               </ion-item>
         </ion-col>
-        <ion-col width-50>
+        <ion-col col-3>
         <ion-item>
             <ion-label floating>Note</ion-label>
             <ion-input [formControl]="addHikingForm.controls['note']"
-                type="text"></ion-input>
+                type="number" min=0 max=5></ion-input>
           </ion-item> 
         </ion-col>
 
+        <ion-row>
+          <ion-col col-6 offset-3>
+            <div formArrayName="steps">
+              <section [formGroupName]="i"
+              *ngFor=" let step of form.controls.steps.controls; let i = index">
+              <ion-col col-6>
+                  <ion-item>
+                      <ion-label floating>LONGITUDE Etape n°{{ i + 1}}</ion-label>
+                      <ion-input [formControl]="longitude"></ion-input>
+                    </ion-item>
+              </ion-col>
+<ion-col col-6>
+    <ion-item>
+        <ion-label floating>LATITUDE Etape n°{{ i + 1}}</ion-label>
+        <ion-input [formControl]="latitude"></ion-input>
+      </ion-item> 
+</ion-col>
+            </section>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6 offset-3>
+              <span
+              ion-button
+              float-left
+              icon-left
+              clear
+              (click)="addNewInputField()">
+                 <ion-icon name="add"></ion-icon>
+                 Add a new step
+           </span>
+          </ion-col>
+        </ion-row>
   </ion-row>
     <ion-row>
-      <ion-col text-center>
+      <ion-col col-6 offset-3 text-center>
         <button ion-button block color="secondary" (click)="addHiking()">
           Ajouter une rando
         </button>

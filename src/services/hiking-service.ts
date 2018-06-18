@@ -42,8 +42,8 @@ export class HikingService {
       return h;
   }
 
-  addHiking(){
-    
+  addHiking(hiking){
+    this.hikings.push(hiking);
   }
 
 
