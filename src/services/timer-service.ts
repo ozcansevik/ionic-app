@@ -10,6 +10,8 @@ export class TimerService {
   private hasStarted: boolean;
   private displayTime: string;
 
+  isStarted(): boolean { return this.hasStarted; }
+
   startTimer() {
     clearTimeout(this._timer);
     this._timer = null;

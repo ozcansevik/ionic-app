@@ -37,7 +37,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="_timerService.isStarted()">
     <ion-toolbar color="primary">
         <activitybar></activitybar>
     </ion-toolbar>
