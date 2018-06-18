@@ -16,6 +16,9 @@ import { CommonModule } from "@angular/common";
     CommonModule,
     AgmDirectionModule 
   ],
+  entryComponents: [
+    MapComponent
+  ],
   exports : [
     MapComponent
   ]

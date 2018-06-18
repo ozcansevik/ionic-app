@@ -1,5 +1,9 @@
 page-master {
 
+    ion-title{
+        font-family: Lobster-Regular;
+    }
+
     .hiking_img{
         //width: 90px;
         //height: 100px;
@@ -25,11 +29,23 @@ page-master {
     .hiking_data{
         margin: 1%;
         h2{
-            padding: 3%;
+            padding: 0 3% 3% 3%;
+            text-align: center;
+            font-size: 2.8rem;
         }
         div{
-            padding: 3%;
+            padding: 1%;
         }
     }
-   
+
+   .location_div{
+       display: flex;
+       align-items: center;
+   } 
+
+   .location_icon{
+       width: 2%;
+       height: 4%;
+       margin-right: 2%;
+   }
 }

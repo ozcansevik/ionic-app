@@ -1,6 +1,6 @@
 <div>
-<agm-map [latitude]="currentLatitude" [longitude]="currentLongitude">
-  <agm-marker [latitude]="currentLatitude" [longitude]="currentLongitude"></agm-marker>
+<agm-map #map id="map" [latitude]="currentLatitude" [longitude]="currentLongitude">
+<agm-marker *ngIf="currentLatitude && currentLongitude" [latitude]="currentLatitude" [longitude]="currentLongitude"></agm-marker>
   <agm-marker *ngFor="let m of markers"
              [label]="{
                       color: 'white',
@@ -21,12 +21,14 @@
 
         </agm-polyline-point>
       </agm-polyline></span>
-    <span *ngIf="useDirection">
-    <agm-direction  *ngFor="let dir of dirs" [renderOptions]="renderOpts" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
-    </span>
+      
+      <span *ngIf="useDirection">
+      <agm-direction *ngFor="let dir of dirs" [renderOptions]="renderOpts" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+      </span>
 
 </agm-map>
 
 <button *ngIf="navigationMode" ion-button round class="direction_button" [ngClass]="{'useDirection' : !useDirection}" (click)="changeMode()">Direction</button>
+<!--<img (click)="initLoc()" class="location_button" src="../../assets/icon/location.png"/>-->
 
 </div>

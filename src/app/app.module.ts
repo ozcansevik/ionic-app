@@ -18,6 +18,7 @@ import { HikingService } from '../services/hiking-service';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { AgmCoreModule } from '@agm/core';
+import { LocationService } from "../services/location-service";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AgmCoreModule } from '@agm/core';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HikingService,
-    Geolocation
+    Geolocation,
+    LocationService
   ]
 })
 export class AppModule {}
