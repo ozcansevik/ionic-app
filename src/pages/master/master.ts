@@ -28,7 +28,6 @@ export class Master {
       this.hikings = hikings;
       if (this.hikings.length > 0) {
         this.loaded = true;
-        console.log(this.loaded)
       }
     })
   }
