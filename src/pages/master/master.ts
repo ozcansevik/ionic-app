@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 
 import {Hiking} from '../../model/hiking'
 import { Step } from '../../model/step';
@@ -11,6 +11,10 @@ import { HikingService } from '../../services/hiking-service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+@IonicPage({
+  name:'Master'
+})
 @Component({
   selector: 'page-master',
   templateUrl: 'master.html',

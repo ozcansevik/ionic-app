@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Master } from '../pages/master/master';
 import { MapComponent } from '../components/map/map-component';
+import { ActivitybarComponent } from '../components/activitybar/activitybar';
+
 import { HikingService } from '../services/hiking-service';
 
 import { Geolocation } from '@ionic-native/geolocation';
@@ -22,28 +24,19 @@ import { LocationService } from "../services/location-service";
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    Master
+    MyApp
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBXXqdX00iR_GUjnBjQ5ptsbc6LJzII_lg'
     })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    Master
+    MyApp
   ],
   providers: [
     StatusBar,
