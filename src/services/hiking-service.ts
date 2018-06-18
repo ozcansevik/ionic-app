@@ -61,6 +61,9 @@ export class HikingService {
     return h;
   }
 
+  addHiking(hiking){
+    this.hikings.push(hiking);
+  }
   fetchHiking(hikings) {
     let hikingCpt = 0;
 

@@ -41,4 +41,8 @@ export class Master {
     this.hikingService.selectHiking(h);
     this.navCtrl.push('DetailBefore', { 'hiking': h });
   }
+
+  goToAddPage(){
+    this.navCtrl.push('AddHiking');
+  }
 }
