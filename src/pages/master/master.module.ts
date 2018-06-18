@@ -13,6 +13,6 @@ import { ActivitybarComponent } from '../../components/activitybar/activitybar';
   imports: [
     IonicPageModule.forChild(Master),
     ActivityBarModule
-  ],
+  ]
 })
 export class MasterModule {}

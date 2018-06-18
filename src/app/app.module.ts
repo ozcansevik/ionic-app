@@ -23,6 +23,7 @@ import { AgmCoreModule } from '@agm/core';
 import { LocationService } from "../services/location-service";
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { TimerService } from '../services/timer-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HttpClientModule } from '@angular/common/http';
     HikingService,
     Geolocation,
     LocationService,
-    HttpClient
+    TimerService,
+    HttpClient,
   ]
 })
 export class AppModule {}

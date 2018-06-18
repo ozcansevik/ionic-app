@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, IonicPage } from 'ionic-angular';
-
 import { Hiking } from '../../model/hiking'
 import { Step } from '../../model/step';
 import { HikingService } from '../../services/hiking-service';
+import { TimerService } from '../../services/timer-service';
 
 /**
  * Generated class for the Master page.
@@ -24,9 +24,10 @@ export class Master {
   hikings: Array<Hiking>
 
   loaded: boolean = false;
+  _timerService: TimerService;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private hikingService: HikingService) {
+    private hikingService: HikingService, private timerService: TimerService) {
 
     this.hikingService.getHikings().subscribe((hikings) => {
       this.hikings = hikings;
@@ -34,6 +35,8 @@ export class Master {
         this.loaded = true;
       }
     })
+
+    this._timerService = timerService;
   }
 
   ionViewDidLoad() {
