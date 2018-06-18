@@ -42,6 +42,10 @@ export class HikingService {
       return h;
   }
 
+  addHiking(){
+    
+  }
+
 
 
 }
