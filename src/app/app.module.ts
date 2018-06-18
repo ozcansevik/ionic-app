@@ -19,6 +19,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { AgmCoreModule } from '@agm/core';
 import { LocationService } from "../services/location-service";
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { LocationService } from "../services/location-service";
     Master
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
@@ -51,7 +54,8 @@ import { LocationService } from "../services/location-service";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HikingService,
     Geolocation,
-    LocationService
+    LocationService,
+    HttpClient
   ]
 })
 export class AppModule {}
