@@ -11,6 +11,10 @@
 
 <ion-content>
 
+    <div class="navbar">
+      <button (click)="navPop()"><ion-icon name="arrow-back"></ion-icon></button>
+    </div>
+
   <div class="div_img">
     <img class="header_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/>
   </div>
@@ -32,7 +36,7 @@
   </div>
 
   <div class="map_div">
-    <map-component [navigationMode]="false" [currentLatitude]="current_latitude" [currentLongitude]="current_longitude"></map-component>
+    <map-component [navigationMode]="false"></map-component>
   </div>
 
 </ion-content>

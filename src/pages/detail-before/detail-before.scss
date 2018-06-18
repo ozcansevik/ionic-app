@@ -45,4 +45,17 @@ page-detail-before {
         height: 10vh;
         margin-top: 5%;
     }
+
+     .navbar{
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        button{
+            background-color: transparent;
+            ion-icon{
+                color: black;
+            }
+        }
+    }
+
 }

@@ -24,8 +24,7 @@ export class DetailBefore {
   current_longitude: number;
   current_latitude: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService,
-              private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
 
     console.log(this.navParams)
     if(this.navParams.get('hiking') != null){
@@ -42,13 +41,10 @@ export class DetailBefore {
     this.navCtrl.push('DetailDuring',{ 'hiking' : h });
   }
 
-  ionViewDidEnter(){
-     let watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      this.current_latitude = data.coords.latitude;
-      this.current_longitude = data.coords.longitude;
-    });
+  navPop() {
+    if (this.navCtrl.getPrevious() != null) {
+      this.navCtrl.pop();
+    }
   }
 
 }

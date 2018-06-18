@@ -3,6 +3,7 @@ import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { Hiking } from '../../model/hiking';
 import { HikingService } from "../../services/hiking-service";
 import { Geolocation } from '@ionic-native/geolocation';
+import { LocationService } from "../../services/location-service";
 
 /**
  * Generated class for the DetailDuring page.
@@ -23,29 +24,19 @@ export class DetailDuring {
 
   hiking: Hiking;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService,
-            private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
 
-      this.hiking = this.hikingService.getSelectedHiking();
+    this.hiking = this.hikingService.getSelectedHiking();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailDuring');
   }
 
-  navPop(){
-    if(this.navCtrl.getPrevious() != null){
+  navPop() {
+    if (this.navCtrl.getPrevious() != null) {
       this.navCtrl.pop();
     }
-  }
-
-  ionViewDidEnter(){
-     let watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      this.current_latitude = data.coords.latitude;
-      this.current_longitude = data.coords.longitude;
-    });
   }
 
 }
