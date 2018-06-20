@@ -7,12 +7,14 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 @Injectable()
 export class LocationService {
 
-  location: BehaviorSubject<{lat: number, lng: number}>
+  location: BehaviorSubject<{ lat: number, lng: number }>
 
   constructor(private geolocation: Geolocation) {
-    this.location = new BehaviorSubject({lat: 0, lng: 0});
-    this.geolocation.watchPosition().subscribe( (data)=>{
-       this.location.next({lat: data.coords.latitude, lng: data.coords.longitude})
+    this.location = new BehaviorSubject({ lat: 0, lng: 0 });
+    this.geolocation.watchPosition().subscribe((data) => {
+      if (data.coords) {
+        this.location.next({ lat: data.coords.latitude, lng: data.coords.longitude })
+      }
     });
   }
 

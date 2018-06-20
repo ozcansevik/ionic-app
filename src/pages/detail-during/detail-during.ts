@@ -26,8 +26,16 @@ export class DetailDuring {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
 
-    this.hiking = this.hikingService.getSelectedHiking();
+    if(this.navParams.get('hiking') != null){
+      this.hiking = this.navParams.get('hiking');
+    } else {
+       this.hikingService.getSelectedHiking().subscribe( (hiking)=> {
+        this.hiking = hiking;
+      });
+    }
+
     console.log("selected hiking", this.hiking);
+
   }
 
   ionViewDidLoad() {

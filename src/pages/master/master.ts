@@ -26,7 +26,7 @@ export class Master {
 
     this.hikingService.getHikings().subscribe((hikings) => {
       this.hikings = hikings;
-      if (this.hikings.length > 0) {
+      if (this.hikings && this.hikings.length > 0) {
         this.loaded = true;
       }
     })

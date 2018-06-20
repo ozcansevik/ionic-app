@@ -30,7 +30,9 @@ export class DetailBefore {
     if(this.navParams.get('hiking') != null){
       this.hiking = this.navParams.get('hiking');
     } else {
-      this.hiking = this.hikingService.getSelectedHiking();
+      this.hikingService.getSelectedHiking().subscribe( (hiking)=> {
+        this.hiking = hiking;
+      });
     }
   }
 
