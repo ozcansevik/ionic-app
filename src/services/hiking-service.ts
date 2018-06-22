@@ -50,7 +50,7 @@ export class HikingService {
         h.steps.push(new Step('3', "Pleurez, puis reflechir si vous aurez votre licence", 45.713724, 3.025201));
         h.steps.push(new Step('4', "Demandez de l'aide", 45.755832, 3.139541));
 
-        h.imageUrl = 'img1.jpg';
+        h.imageUrl = 'img3.jpg';
 
         hikings = [h, h, h];
 

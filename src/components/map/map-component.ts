@@ -16,6 +16,8 @@ export class MapComponent implements OnInit {
   currentLatitude: number;
   currentLongitude: number;
 
+  currentStep: any;
+
   dirs = [];
   urlBlueMarker = "../../assets/icon/blue_marker.png";
 
@@ -29,10 +31,13 @@ export class MapComponent implements OnInit {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private locationService: LocationService) {
 
+    this.currentStep = 0;
+
     this.locationService.getLocation().subscribe((data) => {
       this.currentLatitude = data.lat;
       this.currentLongitude = data.lng;
-      console.log('lat lng', this.currentLatitude, this.currentLongitude)
+      
+      this.checkStep();
     })
 
     this.renderOpts = {
@@ -57,6 +62,22 @@ export class MapComponent implements OnInit {
         }
         this.dirs.push(dir);
 
+      }
+    }
+  }
+
+  checkStep(){
+
+    const approxiativeStepLatMin = this.markers[this.currentStep + 1].latitude - 0.0001;
+    const approxiativeStepLatMax = this.markers[this.currentStep + 1].latitude + 0.0001;
+
+    const approxiativeStepLongMin = this.markers[this.currentStep + 1].longitude - 0.0001;
+    const approxiativeStepLongMax = this.markers[this.currentStep + 1].longitude + 0.0001;
+
+    if(this.currentLatitude <  approxiativeStepLatMax && this.currentLatitude > approxiativeStepLatMin){
+      if(this.currentLongitude <  approxiativeStepLongMax && this.currentLongitude > approxiativeStepLongMin){
+        // call step validation popup
+        // if validate increase this.currentStep
       }
     }
   }

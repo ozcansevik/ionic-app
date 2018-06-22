@@ -24,6 +24,7 @@ export class TimerService {
 
   pauseTimer() {
     this.runTimer = false;
+    //localStorage.setItem('time',this.displayTime);
   }
 
   resumeTimer() {
