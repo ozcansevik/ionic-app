@@ -5,14 +5,21 @@ page-master {
     }
 
     .hiking_img{
-        //width: 90px;
-        //height: 100px;
+        width: 200px;
+        height: 150px;
+    }
+
+    .hiking_img{
+        width: 20vw;
+        margin: 0;
     }
 
     .flex_div{
         display: flex;
         padding: 2%;
         align-items: center;
+        margin: 3% 0;
+        box-shadow: 0 0.3125rem 1rem 0 rgba(0,0,0,0.24)
     }
 
     ion-card{
@@ -27,6 +34,7 @@ page-master {
     }
 
     .hiking_data{
+        width: 80vw;
         margin: 1%;
         h2{
             padding: 0 3% 3% 3%;

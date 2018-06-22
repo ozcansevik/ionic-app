@@ -7,8 +7,13 @@ page-detail-before {
 
     .div_img{
         display: flex;
+        height: 38vh;
         justify-content: center;
         background-color: lightgray;
+
+        .hiking_img{
+            width: 50vw;
+        }
     }
 
     h1{

@@ -17,7 +17,10 @@
 
   <div *ngIf="loaded">
     <ion-card class="flex_div" *ngFor="let h of hikings" (click)="selectHiking(h)">
-      <div style="margin: 0"> <img class="hiking_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/></div>
+      <div class="hiking_img"> 
+        <img *ngIf="!h.imageUrl" class="hiking_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/>
+        <img *ngIf="h.imageUrl" class="hiking_img" src="../../assets/imgs/{{h.imageUrl}}"/>
+      </div>
       <div class="hiking_data">
         <h2>{{h.name}}</h2>
         <div class="location_div"> <img src="../../assets/icon/location.png" class="location_icon" /> {{h.lieu}}</div>

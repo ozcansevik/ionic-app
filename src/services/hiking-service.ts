@@ -50,6 +50,8 @@ export class HikingService {
         h.steps.push(new Step('3', "Pleurez, puis reflechir si vous aurez votre licence", 45.713724, 3.025201));
         h.steps.push(new Step('4', "Demandez de l'aide", 45.755832, 3.139541));
 
+        h.imageUrl = 'img1.jpg';
+
         hikings = [h, h, h];
 
         this.fetchHiking(hikings);
@@ -93,6 +95,9 @@ export class HikingService {
         const note = Math.floor(Math.random() * 5) + 1;
 
         let hiking = new Hiking(hikingName, description, "Poitiers", new Date(), 0, note);
+
+        const indexImg = Math.floor(Math.random() * 4) + 1;
+        hiking.imageUrl = 'img' + indexImg + '.jpg';
 
         let stepNumber = 1;
 

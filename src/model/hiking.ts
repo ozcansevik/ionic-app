@@ -7,6 +7,8 @@ export class Hiking{
 
     id: string;
 
+    imageUrl: string;
+
     constructor(public name:string, public description: string, public lieu: string, public duree: Date, public denivele: number, public note: number){
         this.id= UUID.UUID();
         this.steps = [];

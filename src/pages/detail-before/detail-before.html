@@ -16,7 +16,8 @@
     </div>
 
   <div class="div_img">
-    <img class="header_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/>
+      <img *ngIf="!hiking.imageUrl" class="hiking_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/>
+      <img *ngIf="hiking.imageUrl" class="hiking_img" src="../../assets/imgs/{{hiking.imageUrl}}"/>
   </div>
 
   <div class="hiking_data" *ngIf="hiking">
