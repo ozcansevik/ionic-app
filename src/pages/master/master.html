@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
   Generated template for the Master page.
 
@@ -15,19 +16,15 @@
 
 <ion-content padding>
 
-    <div *ngIf="loaded">
-    <ion-card  class="flex_div" *ngFor="let h of hikings" (click)="selectHiking(h)">
+    <ion-card class="flex_div" *ngFor="let h of hikings" (click)="selectHiking(h)">
       <div style="margin: 0"> <img class="hiking_img" src="http://fabienloaec.com/wp-content/themes/trend/assets/img/empty/424x500.png"/></div>
       <div class="hiking_data">
         <h2>{{h.name}}</h2>
         <div class="location_div"> <img src="../../assets/icon/location.png" class="location_icon" /> {{h.lieu}}</div>
         <div>{{h.description}}</div>
         <div class="location_div">
-          <img src="../../assets/icon/clock.png" class="location_icon" />
-          <span>~{{h.duree | date : 'h:mm'}}</span>
-        </div>
-        <div class="location_div">
           <img src="../../assets/icon/moutain.png" class="location_icon" />
+          <span>~{{h.duree | date : 'h:mm'}}</span>
           <span>~{{h.denivele}}m</span>
         </div>
         <div class="location_div"> <img src="../../assets/icon/review.png" class="location_icon" /> {{h.note}}/5</div>
@@ -39,9 +36,15 @@
     <div *ngIf="!loaded" class="loader"></div>
 
     <!--<ion-fab class="add-button" right bottom>
+    <ion-fab class="add-button" right bottom>
       <button ion-fab (click)="goToAddPage()"><ion-icon name="add"></ion-icon></button>
     </ion-fab>-->
 
 </ion-content>
 
+<ion-footer *ngIf="_timerService.isStarted()">
+    <ion-toolbar color="primary">
+        <activitybar></activitybar>
+    </ion-toolbar>
+  </ion-footer>
 

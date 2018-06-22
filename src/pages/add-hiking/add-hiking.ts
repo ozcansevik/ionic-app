@@ -60,7 +60,7 @@ removeInputField(i : number) : void
   }
 
   addHiking() {
-    let h = new Hiking(this.addHikingForm.controls.nom.value, this.addHikingForm.controls.description.value, this.addHikingForm.controls.lieu.value, this.addHikingForm.controls.duree.value, this.addHikingForm.controls.denivelle.value, this.addHikingForm.controls.note.value);
+    //let h = new Hiking(this.addHikingForm.controls.nom.value, this.addHikingForm.controls.description.value, this.addHikingForm.controls.lieu.value, this.addHikingForm.controls.duree.value, this.addHikingForm.controls.denivelle.value, this.addHikingForm.controls.note.value);
     
   }
 

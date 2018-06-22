@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Master } from '../pages/master/master';
 import { MapComponent } from '../components/map/map-component';
+import { ActivitybarComponent } from '../components/activitybar/activitybar';
+
 import { HikingService } from '../services/hiking-service';
 
 import { Geolocation } from '@ionic-native/geolocation';
@@ -21,23 +23,20 @@ import { AgmCoreModule } from '@agm/core';
 import { LocationService } from "../services/location-service";
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { TimerService } from '../services/timer-service';
 
 import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    Master
+    MyApp
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBXXqdX00iR_GUjnBjQ5ptsbc6LJzII_lg'
     }),
@@ -45,12 +44,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    Master
+    MyApp
   ],
   providers: [
     StatusBar,
@@ -59,7 +53,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HikingService,
     Geolocation,
     LocationService,
-    HttpClient
+    TimerService,
+    HttpClient,
   ]
 })
 export class AppModule {}
