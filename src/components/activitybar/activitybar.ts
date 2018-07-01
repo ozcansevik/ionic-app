@@ -16,7 +16,6 @@ export class ActivitybarComponent {
   text: string;
 
   constructor() {
-    console.log('Hello ActivitybarComponent Component');
     this.text = 'Hello World';
   }
 

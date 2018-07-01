@@ -23,7 +23,7 @@
     </div>
 
     <div class="map_div">
-      <map-component [navigationMode]="true" [markers]="hiking.steps"></map-component>
+      <map-component (currentStepChange)="currentStepChange($event)" [navigationMode]="true" [markers]="hiking.steps"></map-component>
     </div>
 
     <div class="step_div">
@@ -31,7 +31,7 @@
 
       <ion-list>
         <div class="step" *ngFor="let step of hiking.steps">
-          <div class="number">{{step.number}}</div>
+          <div [ngClass]="{'stepReached' : stepsReached[step.number]}" class="number">{{step.number}}</div>
           <div>{{step.description}}</div>
         </div>
       </ion-list>

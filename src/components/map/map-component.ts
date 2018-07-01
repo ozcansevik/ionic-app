@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, Input, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Step } from "../../model/step";
 import { LocationService } from "../../services/location-service";
@@ -9,34 +9,41 @@ import { LocationService } from "../../services/location-service";
   templateUrl: 'map-component.html',
 })
 export class MapComponent implements OnInit {
-  loaded: boolean = false;
-  watch: any = null;
+
   useDirection: boolean = true;
 
+  // location of user
   currentLatitude: number;
   currentLongitude: number;
 
   currentStep: any;
 
+  // contains directions
   dirs = [];
+  renderOpts: any;
+
   urlBlueMarker = "../../assets/icon/blue_marker.png";
 
-  renderOpts: any;
   @Input() markers: Array<Step>;
 
   @Input() navigationMode: boolean;
 
-  @ViewChild("map") map : ElementRef;
+  // event to inform parent that current reached step is change
+  @Output() currentStepChange = new EventEmitter();
+
+  alertIsShowing: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private locationService: LocationService) {
+    private locationService: LocationService, private alertCtrl: AlertController) {
 
     this.currentStep = 0;
+
+    this.alertIsShowing = [];
 
     this.locationService.getLocation().subscribe((data) => {
       this.currentLatitude = data.lat;
       this.currentLongitude = data.lng;
-      
+
       this.checkStep();
     })
 
@@ -63,22 +70,72 @@ export class MapComponent implements OnInit {
         this.dirs.push(dir);
 
       }
+
+      this.initStepValidation();
     }
   }
 
-  checkStep(){
-
-    const approxiativeStepLatMin = this.markers[this.currentStep + 1].latitude - 0.0001;
-    const approxiativeStepLatMax = this.markers[this.currentStep + 1].latitude + 0.0001;
-
-    const approxiativeStepLongMin = this.markers[this.currentStep + 1].longitude - 0.0001;
-    const approxiativeStepLongMax = this.markers[this.currentStep + 1].longitude + 0.0001;
-
-    if(this.currentLatitude <  approxiativeStepLatMax && this.currentLatitude > approxiativeStepLatMin){
-      if(this.currentLongitude <  approxiativeStepLongMax && this.currentLongitude > approxiativeStepLongMin){
-        // call step validation popup
-        // if validate increase this.currentStep
+  /*
+  * Function which init array used to check if alert is showed according to a step
+  */
+  initStepValidation() {
+    for (let i = 1; i <= this.markers.length; i++) {
+      if (this.markers[i]) {
+        this.alertIsShowing[i] = false;
       }
     }
+    console.log(this.alertIsShowing);
+  }
+
+  /*
+  * Function which check location of user to validate next step reached
+  */
+  checkStep() {
+
+    if (this.markers) {
+      const approxiativeStepLatMin = this.markers[this.currentStep].latitude - 0.001;
+      const approxiativeStepLatMax = this.markers[this.currentStep].latitude + 0.001;
+
+      const approxiativeStepLongMin = this.markers[this.currentStep].longitude - 0.001;
+      const approxiativeStepLongMax = this.markers[this.currentStep].longitude + 0.001;
+
+      if (this.currentLatitude < approxiativeStepLatMax && this.currentLatitude > approxiativeStepLatMin) {
+        if (this.currentLongitude < approxiativeStepLongMax && this.currentLongitude > approxiativeStepLongMin) {
+
+          if (!this.alertIsShowing[this.currentStep]) {
+
+            // call step validation popup
+
+            this.alertIsShowing[this.currentStep] = true;
+
+            console.log('on step');
+
+            let alert = this.alertCtrl.create({
+              title: 'Confirm step n°' + this.currentStep,
+              message: 'Are you on the step n°' + this.currentStep,
+              buttons: [
+                {
+                  text: 'No',
+                  role: 'cancel',
+                  handler: () => {
+                    this.alertIsShowing[this.currentStep] = false;
+                  }
+                },
+                {
+                  text: 'Yes',
+                  handler: () => {
+                    this.currentStepChange.emit(this.currentStep);
+                    this.currentStep++;
+                  }
+                }
+              ]
+            });
+            alert.present();
+          }
+
+        }
+      }
+    }
+
   }
 }

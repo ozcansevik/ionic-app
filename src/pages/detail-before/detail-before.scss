@@ -27,13 +27,25 @@ page-detail-before {
         align-items: center;
         padding: 2%;
         font-size: 18px;
-        justify-content: space-between;
         div{
             padding: 1%;
         }
 
         .description_text{
             font-size: 14px;
+        }
+
+        .data_div{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+        } 
+
+        .data_icon{
+            width: 2%;
+            height: 4%;
+            margin-right: 2%;
         }
     }
 

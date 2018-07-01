@@ -26,7 +26,7 @@ export class DetailBefore {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private hikingService: HikingService) {
 
-    console.log(this.navParams)
+     /* get hiking by param in case of nav or get hiking from storage in case of page refresh */
     if(this.navParams.get('hiking') != null){
       this.hiking = this.navParams.get('hiking');
     } else {
@@ -36,8 +36,6 @@ export class DetailBefore {
     }
   }
 
-  ionViewDidLoad() {
-  }
 
   start(h){
     this.navCtrl.push('DetailDuring',{ 'hiking' : h });

@@ -26,8 +26,11 @@
         <div class="location_div"> <img src="../../assets/icon/location.png" class="location_icon" /> {{h.lieu}}</div>
         <div>{{h.description}}</div>
         <div class="location_div">
+            <img src="../../assets/icon/clock.png" class="location_icon" />
+          <span>~{{h.duree | date : 'h:mm'}}h</span>
+        </div>
+        <div class="location_div">
           <img src="../../assets/icon/moutain.png" class="location_icon" />
-          <span>~{{h.duree | date : 'h:mm'}}</span>
           <span>~{{h.denivele}}m</span>
         </div>
         <div class="location_div"> <img src="../../assets/icon/review.png" class="location_icon" /> {{h.note}}/5</div>

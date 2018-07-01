@@ -24,10 +24,22 @@
 
     <h1>{{hiking.name}}</h1>
 
-    <div>{{hiking.note}}/5</div>
-    <div>{{hiking.lieu}}</div>
-    <div>~{{hiking.duree | date : 'h:mm'}}</div>
-    <div>{{hiking.denivele}}</div>
+    <div class="data_div">
+      <img src="../../assets/icon/review.png" class="data_icon" />
+       <span>{{hiking.note}}/5</span>
+    </div>
+    <div class="data_div">
+      <img src="../../assets/icon/location.png" class="data_icon" />
+      <span>{{hiking.lieu}}</span>
+    </div>
+    <div class="data_div">
+       <img src="../../assets/icon/clock.png" class="data_icon" />
+       <span>~{{hiking.duree | date : 'h:mm'}}h</span>
+    </div>
+    <div class="data_div">
+      <img src="../../assets/icon/moutain.png" class="data_icon" />
+      <span>{{hiking.denivele}}m</span>
+    </div>
     <div class="description_text">{{hiking.description}}</div>
 
   </div>

@@ -23,7 +23,9 @@ export class Master {
 
   hikings: Array<Hiking>
 
+  // boolean to show spinner while data are loading
   loaded: boolean = false;
+  
   _timerService: TimerService;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -37,10 +39,6 @@ export class Master {
     })
 
     this._timerService = timerService;
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Master');
   }
 
   selectHiking(h) {
