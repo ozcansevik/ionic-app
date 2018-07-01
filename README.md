@@ -10,7 +10,7 @@
 ```
 
 ### Documentations useful are in folder /DOCUMENTATIONS
-[Documentations](https://github.com/ozcansevik/ionic-app/tree/master/DOCUMENTATIONS/HIKING APP SEVIK DETAXIS.pdf)
+[Documentations](https://github.com/ozcansevik/ionic-app/blob/master/DOCUMENTATIONS/HIKING%20APP%20SEVIK%20DETAXIS.pdf)
 
 ### Features implemented
 
